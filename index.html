@@ -56,11 +56,14 @@
     @media(max-width:480px){.hero h1{font-size:32px;}section{margin:25px 10px;padding:20px;}}
     .subtext{animation:fadeSlide 2s ease-in-out;} 
     @keyframes fadeSlide{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.15);}100%{transform:scale(1);}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
   <div class="hero floating">
+    <i class="fa-solid fa-shield-halved" style="font-size:60px;color:white;margin-bottom:20px;animation:pulse 2s infinite;"></i>
     <h1>Desi Wulansari</h1>
     <p class=\"subtext\" style=\"margin-top:15px;font-size:18px;opacity:.95\">Calon Cyber Security Analyst</p>
     <div class="sparkle" style="top:20%;left:30%;animation-delay:0.2s"></div>
