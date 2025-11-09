@@ -7,12 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-    body{background:#e6f3ff;color:#0a2a43;overflow-x:hidden;scroll-behavior:smooth;}
+    body{background: linear-gradient(120deg, #a8d8ff, #d0eaff, #ffffff);color:#0a2a43;overflow-x:hidden;scroll-behavior:smooth;}
 
     /* HERO */
     .hero{
       height:100vh;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;color:white;
-      background:linear-gradient(rgba(0,123,255,0.6),rgba(0,123,255,0.6)),url('https://i.pinimg.com/originals/6e/43/ea/6e43ea3b58c7868e3dcd70ba4b5c2730.jpg');
+      background:linear-gradient(135deg, rgba(0,153,255,0.85), rgba(0,102,204,0.85), rgba(0,180,255,0.85)),url('https://i.pinimg.com/originals/6e/43/ea/6e43ea3b58c7868e3dcd70ba4b5c2730.jpg');
       background-size:cover;background-position:center;position:relative;overflow:hidden;
       animation:fadeHero 2s ease-in-out;
     }
@@ -41,7 +41,7 @@
     @keyframes blinkSparkle{0%{opacity:0;}50%{opacity:1;}100%{opacity:0;}}
 
     /* SECTION */
-    section{
+    section{background: rgba(255,255,255,0.85);backdrop-filter: blur(6px);
       max-width:900px;margin:50px auto;background:#ffffffcc;padding:30px;border-radius:16px;border:3px solid #9bd3ff;
       box-shadow:0 4px 18px rgba(0,0,0,0.08);
     }
@@ -54,13 +54,15 @@
     footer{text-align:center;padding:40px;color:#4da6ff;font-weight:600;}
 
     @media(max-width:480px){.hero h1{font-size:32px;}section{margin:25px 10px;padding:20px;}}
-  </style>
+    .subtext{animation:fadeSlide 2s ease-in-out;} 
+    @keyframes fadeSlide{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
+</style>
 </head>
 <body>
 
   <div class="hero floating">
     <h1>Desi Wulansari</h1>
-    <p style="margin-top:15px;font-size:18px;opacity:.95">Calon Cyber Security Analyst</p>
+    <p class=\"subtext\" style=\"margin-top:15px;font-size:18px;opacity:.95\">Calon Cyber Security Analyst</p>
     <div class="sparkle" style="top:20%;left:30%;animation-delay:0.2s"></div>
     <div class="sparkle" style="top:60%;left:70%;animation-delay:0.7s"></div>
     <div class="sparkle" style="top:40%;left:50%;animation-delay:1.4s"></div>
