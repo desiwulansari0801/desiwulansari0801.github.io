@@ -1,116 +1,214 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Desi Wulansari</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-    body{background: linear-gradient(120deg, #a8d8ff, #d0eaff, #ffffff);color:#0a2a43;overflow-x:hidden;scroll-behavior:smooth;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio Desi Wulansari</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  body{
+    background: #f9f5ff;
+    color:#333;
+    overflow:hidden;
+  }
 
-    /* HERO */
-    .hero{
-      height:100vh;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;color:white;
-      background:linear-gradient(135deg, rgba(0,153,255,0.85), rgba(0,102,204,0.85), rgba(0,180,255,0.85)),url('https://i.pinimg.com/originals/6e/43/ea/6e43ea3b58c7868e3dcd70ba4b5c2730.jpg');
-      background-size:cover;background-position:center;position:relative;overflow:hidden;
-      animation:fadeHero 2s ease-in-out;
-    }
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
 
-    @keyframes fadeHero{from{opacity:0;}to{opacity:1;}}
+  /* Header-top dan menu satu warna soft lavender */
+  .header-top, .header-menu{
+    background: #c8a2ff;
+  }
 
-    .hero h1{
-      font-size:45px;
-      font-weight:700;
-      text-shadow:0 0 12px #71c4ff;
-      white-space:nowrap;
-      overflow:hidden;
-      display:inline-block;
-      border-right:3px solid white;
-      padding:0;
-      margin:0;
-      letter-spacing:0;
-      animation:typing 3s steps(20,end) forwards, blink .7s infinite;
-    }
+  .header-top{
+    padding: 30px 20px;
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    margin-bottom: 10px;
+  }
 
-    @keyframes typing{from{width:0;}to{width:100%;}}to{width:100%;}}
-    @keyframes blink{50%{border-color:transparent;}}
+  .profile-img{
+    width:100px;height:100px;border-radius:50%;object-fit:cover;
+    border:3px solid #ff7eb9;
+    margin-bottom:10px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .profile-img:hover{transform: scale(1.05); border-color:#7ab8ff;}
 
-    .floating{
-      animation:float 4s ease-in-out infinite;
-    }
-    @keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-12px);}100%{transform:translateY(0);}}
+  h1{
+    font-size:2rem;
+    color:#fff;
+    text-shadow: 
+      2px 2px 0 #ff7eb9,
+      -2px -2px 0 #7ab8ff,
+      3px 3px 10px rgba(255,126,185,0.5),
+      0 0 15px rgba(122,184,255,0.5);
+    margin-bottom:10px;
+  }
 
-    .sparkle{
-      position:absolute;width:6px;height:6px;background:white;border-radius:50%;opacity:0.7;
-      animation:blinkSparkle 2s infinite ease-in-out;
-    }
-    @keyframes blinkSparkle{0%{opacity:0;}50%{opacity:1;}100%{opacity:0;}}
+  p.tagline{
+    font-size:1rem;
+    color:#fff;
+    padding:5px 15px;
+    border-radius:15px;
+    display:inline-block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.25);
+  }
 
-    /* SECTION */
-    section{background: rgba(255,255,255,0.85);backdrop-filter: blur(6px);
-      max-width:900px;margin:50px auto;background:#ffffffcc;padding:30px;border-radius:16px;border:3px solid #9bd3ff;
-      box-shadow:0 4px 18px rgba(0,0,0,0.08);
-    }
-    h2{font-size:26px;color:#0077dd;text-shadow:0 0 10px #cbe9ff;margin-bottom:12px;}
+  .header-menu{
+    width: 100%;
+    border-top: 2px solid #c8a2ff;
+    padding-top: 10px;
+  }
 
-    /* REVEAL */
-    .reveal{opacity:0;transform:translateY(40px);transition:all 1s ease;}
-    .reveal.active{opacity:1;transform:translateY(0);}
+  .header-menu nav a{
+    text-decoration:none;
+    color:#333;
+    margin:0 15px;
+    font-weight:500;
+    padding:8px 15px;
+    border-radius:20px;
+    background: rgba(255,255,255,0.7);
+    transition: all 0.3s;
+    cursor:pointer;
+  }
+  .header-menu nav a:hover, .header-menu nav a.active{
+    background:#ff7eb9;
+    color:#fff;
+  }
 
-    footer{text-align:center;padding:40px;color:#4da6ff;font-weight:600;}
+  section{
+    display:none;
+    height: calc(100vh - 180px);
+    padding:20px;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    opacity:0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  section.active{
+    display:flex;
+    opacity:1;
+    transform: translateY(0);
+  }
 
-    @media(max-width:480px){.hero h1{font-size:32px;}section{margin:25px 10px;padding:20px;}}
-    .subtext{animation:fadeSlide 2s ease-in-out;} 
-    @keyframes fadeSlide{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
-  @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.15);}100%{transform:scale(1);}}
+  h2{font-size:2rem;margin-bottom:20px;color:#7ab8ff;}
+
+  .contact-links{
+    display:flex;justify-content:center;gap:30px;flex-wrap:wrap;
+    opacity:0;transform: scale(0.5);
+    transition: all 0.6s ease;margin-top:20px;
+  }
+  .contact-links.show{opacity:1;transform: scale(1.2);}
+  .contact-links a{
+    text-decoration:none;color:#fff;width:60px;height:60px;display:flex;justify-content:center;align-items:center;border-radius:50%;
+    font-size:1.5rem;transition: transform 0.3s;
+  }
+  .contact-links a.github{background:#333;}
+  .contact-links a.instagram{background:#e1306c;}
+  .contact-links a.linkedin{background:#0077b5;}
+  .contact-links a.email{background:#ff7eb9;}
+  .contact-links a:hover{transform: translateY(-5px);}
+
+  @media(max-width:600px){
+    h1{font-size:1.5rem;}
+    p.tagline{font-size:0.9rem;margin-bottom:15px;}
+    .profile-img{width:80px;height:80px;}
+    .header-menu nav a{margin:5px;padding:5px 10px;}
+    .contact-links a{width:50px;height:50px;font-size:1.2rem;}
+  }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-  <div class="hero floating">
-    <i class="fa-solid fa-shield-halved" style="font-size:60px;color:white;margin-bottom:20px;animation:pulse 2s infinite;"></i>
+<header>
+  <div class="header-top">
+    <img src="foto-aku.jpg" alt="Foto Desi Wulansari" class="profile-img">
     <h1>Desi Wulansari</h1>
-    <p class=\"subtext\" style=\"margin-top:15px;font-size:18px;opacity:.95\">Calon Cyber Security Analyst</p>
-    <div class="sparkle" style="top:20%;left:30%;animation-delay:0.2s"></div>
-    <div class="sparkle" style="top:60%;left:70%;animation-delay:0.7s"></div>
-    <div class="sparkle" style="top:40%;left:50%;animation-delay:1.4s"></div>
+    <p class="tagline">"Bukan sekadar skill, tapi karya yang berbicara."</p>
   </div>
 
-  <section class="reveal">
-    <h2>Tentang Saya</h2>
-    <p>Saya Desi Wulansari, seorang pemula yang sedang mendalami dunia Cyber Security. Saya suka mempelajari keamanan jaringan, server, analisis sistem, dan perlindungan data. Saya percaya bahwa keamanan digital adalah fondasi penting di era teknologi.</p>
-  </section>
+  <div class="header-menu">
+    <nav>
+      <a onclick="showSection('home')" class="active">Beranda</a>
+      <a onclick="showSection('projects')">Projects</a>
+      <a onclick="showSection('achievements')">Achievements</a>
+      <a onclick="showSection('experience')">Experience</a>
+      <a onclick="showSection('contact')">Contact</a>
+      <a onclick="showSection('about')">About</a>
+    </nav>
+  </div>
+</header>
 
-  <section class="reveal">
-    <h2>Keahlian</h2>
-    <ul>
-      <li>Dasar-dasar Cyber Security</li>
-      <li>Pemahaman Jaringan & Server</li>
-      <li>Analisis Keamanan Dasar</li>
-    </ul>
-  </section>
+<section id="home" class="active">
+  <h2>Selamat Datang!</h2>
+  <p>Ini adalah halaman awal portofolio Desi Wulansari. Klik menu untuk melihat Projects, Achievements, Experience, Contact, dan About.</p>
+</section>
 
-  <section class="reveal">
-    <h2>Kontak</h2>
-    <p>Instagram: <a href="https://instagram.com/desi_wulansari" target="_blank">@desi_wulansari</a></p>
-  </section>
+<section id="projects">
+  <h2>Projects</h2>
+  <p>Di sini Desi bisa menampilkan project terbaikmu.</p>
+</section>
 
-  <footer>💫 Designed & Built by Desi Wulansari (2025)</footer>
+<section id="achievements">
+  <h2>Achievements</h2>
+  <p>Di sini Desi bisa menampilkan prestasi dan penghargaanmu.</p>
+</section>
 
-  <script>
-    function revealOnScroll(){
-      const reveals=document.querySelectorAll('.reveal');
-      for(let i=0;i<reveals.length;i++){
-        const windowHeight=window.innerHeight;
-        const revealTop=reveals[i].getBoundingClientRect().top;
-        const revealPoint=120;
-        if(revealTop<windowHeight-revealPoint){reveals[i].classList.add('active');}
-      }
+<section id="experience">
+  <h2>Experience</h2>
+  <p>Di sini Desi bisa menampilkan pengalaman kerja atau magang.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p style="margin-bottom:30px;">Hubungi aku melalui sosial media dan email:</p>
+  <div class="contact-links">
+    <a href="https://github.com/desiwulansari" class="github" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://instagram.com/desiwulansari" class="instagram" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://linkedin.com/in/desiwulansari" class="linkedin" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:desiwulansari@email.com" class="email" title="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <p>Desi bisa menulis sedikit tentang dirimu di sini.</p>
+</section>
+
+<script>
+  function showSection(id){
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    const contactLinks = document.querySelector('.contact-links');
+    if(id==='contact'){
+      setTimeout(()=> contactLinks.classList.add('show'),100);
+    } else{
+      contactLinks.classList.remove('show');
     }
-    window.addEventListener('scroll',revealOnScroll);
-    revealOnScroll();
-  </script>
+
+    const menuLinks = document.querySelectorAll('.header-menu nav a');
+    menuLinks.forEach(link => link.classList.remove('active'));
+    menuLinks.forEach(link => {
+      if(link.getAttribute('onclick').includes(id)) link.classList.add('active');
+    });
+  }
+</script>
+
 </body>
 </html>
