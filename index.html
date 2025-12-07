@@ -10,195 +10,117 @@
 
 <style>
   :root{
-    --lav-50: #f6f3ff;
-    --lav-100: #efe8ff;
-    --lav-200: #e6dbff;
-    --lav-500: #bfa2ff;
-    --lav-600: #a57bff;
-    --accent: #8a63ff;
-    --muted:#6b6b7a;
+    --lav-50:#f6f3ff; --lav-100:#efe8ff; --lav-200:#e6dbff;
+    --lav-500:#bfa2ff; --lav-600:#a57bff; --accent:#8a63ff; --muted:#6b6b7a;
+    --card-bg:#ffffff;
   }
-
   *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
   body{
-    font-family:'Poppins',sans-serif;
-    background:var(--lav-50);
-    color:#222;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    line-height:1.5;
-    scroll-behavior:smooth;
+    font-family:'Poppins',sans-serif;background:var(--lav-50);color:#222;line-height:1.5;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   }
+  .container{max-width:1200px;margin:0 auto;padding:0 20px}
 
   /* ===== HEADER ===== */
   header{
     position:sticky;top:0;z-index:1200;
-    backdrop-filter:blur(6px);
-    background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
-    border-bottom:1px solid rgba(140,110,255,0.08);
-    transition:transform .5s ease, box-shadow .3s;
+    background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7));
+    border-bottom:1px solid rgba(140,110,255,0.07);
+    backdrop-filter: blur(6px);
+    transform: translateY(-6px);
+    transition: transform .6s ease, box-shadow .3s;
   }
-  .container{max-width:1200px;margin:0 auto;padding:0 20px;}
-  .nav-row{
-    display:flex;align-items:center;justify-content:space-between;padding:14px 0;
-  }
-  .brand{
-    display:flex;align-items:center;gap:12px;
-  }
-  .logo{
-    width:42px;height:42px;border-radius:8px;
-    background:linear-gradient(135deg,var(--lav-600),var(--lav-200));
-    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
-    box-shadow:0 4px 14px rgba(138,99,255,0.18);
-  }
-  .brand span{font-weight:700;color:var(--accent);letter-spacing:0.2px}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--lav-600),var(--lav-200));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(138,99,255,0.12)}
+  .brand span{color:var(--accent);font-weight:700}
 
-  /* center nav */
-  nav.nav-center{
-    flex:1;display:flex;justify-content:center;
-  }
-  nav.nav-center ul{
-    display:flex;gap:12px;list-style:none;align-items:center;
-  }
-  nav.nav-center a{
-    text-decoration:none;color:var(--muted);
-    padding:8px 12px;border-radius:12px;font-weight:600;
-    transition:all .18s;
-  }
-  nav.nav-center a.active,
-  nav.nav-center a:hover{
-    color:#fff;background: linear-gradient(90deg,var(--lav-600),var(--lav-500));
-    box-shadow:0 6px 16px rgba(138,99,255,0.12);
-  }
+  nav.nav-center{flex:1;display:flex;justify-content:center}
+  nav.nav-center ul{display:flex;gap:10px;list-style:none;align-items:center}
+  nav.nav-center a{display:inline-block;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--muted);font-weight:600;transition:all .18s}
+  nav.nav-center a:hover, nav.nav-center a.active{color:#fff;background:linear-gradient(90deg,var(--lav-600),var(--lav-500));box-shadow:0 8px 24px rgba(138,99,255,0.12)}
 
-  /* right actions */
-  .nav-actions{display:flex;gap:10px;align-items:center;}
-  .btn-ghost{
-    background:transparent;border:1px solid rgba(138,99,255,0.12);padding:8px 12px;border-radius:10px;color:var(--accent);font-weight:600;
-  }
-  .btn-primary{
-    background:linear-gradient(90deg,var(--lav-600),var(--lav-500));color:#fff;padding:8px 14px;border-radius:10px;border:none;font-weight:600;
-    box-shadow:0 8px 22px rgba(138,99,255,0.14);
-  }
-
-  /* small dropdown sample */
-  .dropdown{
-    position:relative;
-  }
-  .dropdown-menu{
-    position:absolute;top:44px;left:0;
-    background:white;border-radius:12px;padding:10px;width:220px;
-    box-shadow:0 8px 18px rgba(20,18,30,0.06);display:none;
-  }
-  .dropdown:hover .dropdown-menu{display:block}
+  .nav-actions{display:flex;gap:10px;align-items:center}
+  .btn-ghost{background:transparent;border:1px solid rgba(138,99,255,0.12);padding:8px 12px;border-radius:10px;color:var(--accent);font-weight:600}
+  .btn-primary{background:linear-gradient(90deg,var(--lav-600),var(--lav-500));color:#fff;padding:8px 14px;border-radius:10px;border:none;font-weight:600;box-shadow:0 10px 30px rgba(138,99,255,0.12)}
 
   /* ===== HERO (Hybrid) ===== */
-  .hero{
-    padding:42px 0 60px;
-  }
-  .hero-grid{
-    display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center;
-    max-width:1200px;margin:0 auto;padding:0 20px;
-  }
+  .hero{padding:42px 0 40px}
+  .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;max-width:1200px;margin:0 auto;padding:0 20px}
+  .hero-left{max-width:680px}
+  .kicker{display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,#fff,rgba(255,255,255,0.5));color:var(--accent);font-weight:700;margin-bottom:14px;box-shadow:0 8px 24px rgba(138,99,255,0.06)}
+  .hero-title{font-size:2.3rem;color:#27143b;line-height:1.05;margin-bottom:12px;font-weight:800}
+  .hero-desc{color:#4b3e6b;margin-bottom:20px}
+  .hero-ctas{display:flex;gap:12px}
 
-  .hero-left{
-    max-width:680px;
-  }
-  .kicker{
-    display:inline-block;background:linear-gradient(90deg,#fff, rgba(255,255,255,0.5));padding:6px 12px;border-radius:999px;
-    color:var(--accent);font-weight:700;margin-bottom:18px;
-    box-shadow:0 6px 18px rgba(138,99,255,0.06);
-  }
-  .hero-title{
-    font-size:2.4rem;color:#2b1658;line-height:1.05;margin-bottom:16px;
-    font-weight:800;
-  }
-  .hero-desc{
-    color:#4b3e6b;margin-bottom:22px;font-size:1rem;
-  }
-  .hero-ctas{display:flex;gap:12px;align-items:center;}
-  .cta-ghost{background:transparent;border:1px solid rgba(138,99,255,0.12);padding:10px 14px;border-radius:10px;color:var(--accent);font-weight:600;}
-  .cta-primary{background:linear-gradient(90deg,var(--lav-600),var(--lav-500));color:#fff;padding:10px 16px;border-radius:12px;border:none;font-weight:700;box-shadow:0 8px 20px rgba(138,99,255,0.12)}
-
-  /* right hero: photo bubble + decoration */
-  .hero-right{
-    display:flex;align-items:center;justify-content:center;position:relative;
-  }
-
-  .photo-bubble{
-    width:320px;height:320px;border-radius:200px;background:linear-gradient(135deg,var(--lav-200),#fff);
-    display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(138,99,255,0.12);
-    position:relative;overflow:visible;
-  }
+  .hero-right{display:flex;align-items:center;justify-content:center;position:relative}
+  .photo-bubble{width:320px;height:320px;border-radius:20rem;background:linear-gradient(135deg,var(--lav-200),#fff);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(138,99,255,0.10);position:relative;overflow:visible}
   .photo-bubble img{width:240px;height:240px;border-radius:999px;object-fit:cover;border:6px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+  .shape{position:absolute;border-radius:12px;background:linear-gradient(180deg,rgba(138,99,255,0.08),rgba(197,162,255,0.12));width:90px;height:40px;top:-18px;right:-18px;transform:rotate(12deg)}
 
-  /* small decorative shapes */
-  .shape{
-    position:absolute;border-radius:12px;
-    background:linear-gradient(180deg,rgba(138,99,255,0.08),rgba(197,162,255,0.12));
-    width:90px;height:40px;top:-18px;right:-18px;transform:rotate(12deg);
-  }
-
-  /* stats cards under hero */
-  .stats-row{display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap}
-  .stat{background:#fff;padding:18px;border-radius:14px;min-width:160px;text-align:left;box-shadow:0 8px 20px rgba(20,18,30,0.03)}
-  .stat .num{font-size:1.4rem;font-weight:800;color:var(--accent)}
+  .stats-row{display:flex;gap:14px;justify-content:flex-start;margin-top:22px;flex-wrap:wrap}
+  .stat{background:var(--card-bg);padding:14px;border-radius:12px;min-width:140px;text-align:left;box-shadow:0 8px 20px rgba(20,18,30,0.03)}
+  .stat .num{font-size:1.3rem;font-weight:800;color:var(--accent)}
   .stat .label{color:var(--muted);font-size:.9rem;margin-top:6px}
 
-  /* ===== SECTIONS (projects/achievements/etc) reuse earlier styles but purple tones ===== */
-  section.content{
-    padding:60px 20px;
-  }
+  /* SECTIONS */
+  section.content{padding:60px 20px}
   .section-inner{max-width:1100px;margin:0 auto}
+  .section-title{font-size:1.5rem;color:#3a2461;margin-bottom:10px;font-weight:700}
 
-  .section-title{font-size:1.6rem;color:#3a2461;margin-bottom:14px;font-weight:700}
-
-  /* Projects grid */
-  .project-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;margin-top:20px;
-  }
-  .project-card{
-    background:#fff;padding:18px;border-radius:14px;box-shadow:0 8px 20px rgba(20,18,30,0.04);
-    text-align:center;cursor:pointer;transition:transform .22s, box-shadow .22s;
-  }
-  .project-card:hover{transform:translateY(-8px);box-shadow:0 12px 34px rgba(20,18,30,0.06);}
-  .project-card i{display:block;font-size:34px;color:var(--lav-600);margin-bottom:10px}
+  /* Projects */
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;margin-top:14px}
+  .project-card{background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(20,18,30,0.04);text-align:center;cursor:pointer;transition:transform .22s,box-shadow .22s}
+  .project-card:hover{transform:translateY(-8px);box-shadow:0 14px 34px rgba(20,18,30,0.06)}
+  .project-card i{display:block;font-size:30px;color:var(--lav-600);margin-bottom:10px}
   .project-card small{color:var(--muted);display:block;margin-top:6px}
 
-  /* Achievements grid (square images) */
-  .certificate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-top:18px}
-  .cert-item{background:#fff;padding:12px;border-radius:12px;box-shadow:0 8px 20px rgba(20,18,30,0.04);text-align:center;cursor:pointer}
+  /* Achievements */
+  .certificate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:12px}
+  .cert-item{background:var(--card-bg);padding:12px;border-radius:12px;box-shadow:0 8px 20px rgba(20,18,30,0.04);text-align:center;cursor:pointer;transition:transform .2s}
+  .cert-item:hover{transform:translateY(-6px)}
   .cert-item img{width:100%;height:140px;object-fit:cover;border-radius:8px}
   .cert-item p{margin-top:10px;font-weight:600;color:#463360;font-size:.95rem}
 
-  /* Modal base */
-  .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:2000; }
-  .modal.show{ display:flex; }
-  .modal-backdrop{position:absolute; inset:0; background:rgba(10,8,20,0.45); backdrop-filter: blur(4px);}
-  .modal-card{position:relative; background:#fff;border-radius:14px;padding:22px; width:94%;max-width:820px;z-index:2; box-shadow:0 22px 60px rgba(20,18,30,0.3)}
-  .modal-close{position:absolute;right:14px;top:10px;border:none;background:transparent;font-size:22px;color:var(--muted);cursor:pointer}
+  /* Experience */
+  .exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:14px}
+  .exp-card{background:var(--card-bg);padding:16px;border-radius:12px;box-shadow:0 8px 20px rgba(20,18,30,0.04)}
 
-  /* server menu buttons inside modal */
-  .server-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:12px}
+  /* Contact (horizontal) */
+  #contact { padding:60px 0; background:linear-gradient(180deg,var(--lav-50),#fff) }
+  .contact-inner{max-width:880px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px;background:rgba(255,255,255,0.85);border-radius:12px;box-shadow:0 8px 20px rgba(20,18,30,0.04)}
+  .contact-left p{color:var(--muted);font-size:1rem}
+  .contact-icons{display:flex;gap:14px;align-items:center}
+  .contact-icons a{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:12px;background:var(--card-bg);box-shadow:0 8px 20px rgba(20,18,30,0.04);color:var(--muted);text-decoration:none;font-size:20px;transition:transform .18s,box-shadow .18s}
+  .contact-icons a:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(138,99,255,0.12);color:var(--accent)}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:2400}
+  .modal.show{display:flex}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(10,8,20,0.45);backdrop-filter:blur(4px)}
+  .modal-card{position:relative;background:var(--card-bg);border-radius:12px;padding:20px;width:94%;max-width:820px;z-index:2;box-shadow:0 22px 60px rgba(20,18,30,0.18);transform:translateY(20px);opacity:0;transition:all .36s}
+  .modal.show .modal-card{transform:translateY(0);opacity:1}
+  .modal-close{position:absolute;right:12px;top:10px;border:none;background:transparent;font-size:20px;color:var(--muted);cursor:pointer}
+
+  /* server menu & buttons */
+  .server-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:12px}
   .server-btn{padding:10px;border-radius:10px;border:1px solid rgba(138,99,255,0.12);background:linear-gradient(180deg,#fff,#fbf9ff);cursor:pointer;font-weight:600;color:var(--accent)}
 
-  /* code block */
-  pre{background:#f6f5ff;padding:12px;border-radius:8px;overflow:auto;border:1px solid rgba(138,99,255,0.06)}
+  pre{background:#fbf8ff;padding:12px;border-radius:8px;overflow:auto;border:1px solid rgba(138,99,255,0.06);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px}
 
-  /* responsive tweaks */
-  @media(max-width:980px){
-    .hero-grid{grid-template-columns:1fr 320px}
-    .photo-bubble{width:260px;height:260px}
-    .photo-bubble img{width:200px;height:200px}
-  }
+  /* small screens */
+  @media(max-width:980px){ .hero-grid{grid-template-columns:1fr 320px} .photo-bubble{width:260px;height:260px} .photo-bubble img{width:200px;height:200px} }
   @media(max-width:760px){
     nav.nav-center{display:none}
     .hero-grid{grid-template-columns:1fr;gap:18px}
     .hero-right{order:-1;display:flex;justify-content:center}
     .photo-bubble{margin:0 auto}
     .hero-title{font-size:1.6rem}
-    .stats-row{flex-direction:column;align-items:stretch}
+    .contact-inner{flex-direction:column;align-items:center;text-align:center}
   }
+  /* small utility */
+  .muted{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -231,30 +153,21 @@
 
 <!-- HERO -->
 <section id="home" class="hero" aria-label="hero">
-  <div class="hero-grid">
+  <div class="hero-grid container">
     <div class="hero-left">
       <div class="kicker">Student & Builder</div>
       <h1 class="hero-title">Desi Wulansari — belajar, membangun, dan berbagi.</h1>
       <p class="hero-desc">Aku membangun layanan server (DHCP, DNS, FTP, Mail) dan project web. Semua dibangun untuk belajar dan sekaligus jadi tutorial bagi teman yang ingin mencoba.</p>
 
       <div class="hero-ctas">
-        <button class="cta-primary" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">Lihat Projects</button>
-        <button class="cta-ghost" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Hubungi</button>
+        <button class="btn-primary" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">Lihat Projects</button>
+        <button class="btn-ghost" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Hubungi</button>
       </div>
 
-      <div class="stats-row" style="margin-top:22px">
-        <div class="stat">
-          <div class="num">9</div>
-          <div class="label">Layanan Server</div>
-        </div>
-        <div class="stat">
-          <div class="num">12</div>
-          <div class="label">Project & Tutorial</div>
-        </div>
-        <div class="stat">
-          <div class="num">3</div>
-          <div class="label">Juara Nasional</div>
-        </div>
+      <div class="stats-row">
+        <div class="stat"><div class="num">9</div><div class="label muted">Layanan Server</div></div>
+        <div class="stat"><div class="num">12</div><div class="label muted">Project & Tutorial</div></div>
+        <div class="stat"><div class="num">3</div><div class="label muted">Juara Nasional</div></div>
       </div>
     </div>
 
@@ -271,33 +184,31 @@
 <section id="projects" class="content">
   <div class="section-inner">
     <div class="section-title">Projects — Server & Tools</div>
-    <p style="color:var(--muted)">Klik salah satu project untuk melihat tutorial atau demo.</p>
+    <p class="muted">Klik salah satu project untuk melihat tutorial atau demo.</p>
 
     <div class="project-grid">
-      <!-- Project Server (opens submenu modal) -->
       <div class="project-card" data-type="server">
         <i class="fas fa-server"></i>
         <div>Project Server</div>
-        <small>DHCP / DNS / Apache / Nginx / FTP / Mail</small>
+        <small class="muted">DHCP / DNS / Apache / Nginx / FTP / Mail</small>
       </div>
 
-      <!-- other example projects -->
       <div class="project-card" data-type="web">
         <i class="fas fa-code"></i>
         <div>Web Development</div>
-        <small>HTML / CSS / JS</small>
+        <small class="muted">HTML / CSS / JS</small>
       </div>
 
       <div class="project-card" data-type="db">
         <i class="fas fa-database"></i>
         <div>Database</div>
-        <small>MySQL / PostgreSQL</small>
+        <small class="muted">MySQL / PostgreSQL</small>
       </div>
 
       <div class="project-card" data-type="tools">
         <i class="fas fa-tools"></i>
         <div>Tools & Scripts</div>
-        <small>Automation & Monitoring</small>
+        <small class="muted">Automation & Monitoring</small>
       </div>
     </div>
   </div>
@@ -307,21 +218,12 @@
 <section id="achievements" class="content">
   <div class="section-inner">
     <div class="section-title">Achievements</div>
-    <p style="color:var(--muted)">Beberapa prestasi dan sertifikat yang pernah aku dapatkan.</p>
+    <p class="muted">Beberapa prestasi dan sertifikat yang pernah aku dapatkan.</p>
 
     <div class="certificate-grid">
-      <div class="cert-item">
-        <img src="sertifikat1.jpg" alt="sertifikat 1">
-        <p>Juara 1 — Lomba Biologi Nasional</p>
-      </div>
-      <div class="cert-item">
-        <img src="sertifikat2.jpg" alt="sertifikat 2">
-        <p>Juara 2 — LKS TKJ</p>
-      </div>
-      <div class="cert-item">
-        <img src="sertifikat3.jpg" alt="sertifikat 3">
-        <p>Juara Favorit — Web Design</p>
-      </div>
+      <div class="cert-item"><img src="sertifikat1.jpg" alt="sery1"><p>Juara 1 — Lomba Biologi Nasional</p></div>
+      <div class="cert-item"><img src="sertifikat2.jpg" alt="sery2"><p>Juara 2 — LKS TKJ</p></div>
+      <div class="cert-item"><img src="sertifikat3.jpg" alt="sery3"><p>Juara Favorit — Web Design</p></div>
     </div>
   </div>
 </section>
@@ -330,20 +232,11 @@
 <section id="experience" class="content">
   <div class="section-inner">
     <div class="section-title">Experience</div>
-    <p style="color:var(--muted)">Pengalaman magang, kerja tim, dan deployment proyek.</p>
+    <p class="muted">Pengalaman magang, kerja tim, dan deployment proyek.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px">
-      <div style="background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(20,18,30,0.04)">
-        <img src="sertifikat2.jpg" style="width:100%;height:160px;object-fit:cover;border-radius:8px" alt="">
-        <h4 style="margin-top:12px">PKL - Deployment Server</h4>
-        <p style="color:var(--muted)">Praktik langsung dalam setup DHCP, DNS, FTP.</p>
-      </div>
-
-      <div style="background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(20,18,30,0.04)">
-        <img src="sertifikat3.jpg" style="width:100%;height:160px;object-fit:cover;border-radius:8px" alt="">
-        <h4 style="margin-top:12px">Lomba & Presentasi</h4>
-        <p style="color:var(--muted)">Presentasi topologi jaringan dan hasil konfigurasi.</p>
-      </div>
+    <div class="exp-grid">
+      <div class="exp-card"><img src="sertifikat2.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px" alt=""><h4 style="margin-top:12px">PKL - Deployment Server</h4><p class="muted">Praktik langsung setup DHCP, DNS, FTP.</p></div>
+      <div class="exp-card"><img src="sertifikat3.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px" alt=""><h4 style="margin-top:12px">Lomba & Presentasi</h4><p class="muted">Presentasi topologi jaringan dan hasil konfigurasi.</p></div>
     </div>
   </div>
 </section>
@@ -352,14 +245,19 @@
 <section id="contact" class="content">
   <div class="section-inner">
     <div class="section-title">Contact</div>
-    <p style="color:var(--muted)">Hubungi aku lewat platform berikut:</p>
+    <p class="muted">Hubungi aku lewat platform berikut:</p>
 
-    <div style="margin-top:16px" class="contact-links">
-      <a class="github" href="https://github.com/desiwulansari" target="_blank" title="GitHub" style="text-decoration:none"><div style="width:60px;height:60px;border-radius:12px;background:#111;color:#fff;display:flex;align-items:center;justify-content:center"><i class="fab fa-github"></i></div></a>
+    <div class="contact-inner" style="margin-top:16px">
+      <div class="contact-left">
+        <p>Hubungi aku melalui sosial media dan email — klik ikon di samping.</p>
+      </div>
 
-      <a class="instagram" href="https://instagram.com/desiwulansari" target="_blank" title="Instagram" style="text-decoration:none"><div style="width:60px;height:60px;border-radius:12px;background:linear-gradient(45deg,#f09433,#e6683c);color:#fff;display:flex;align-items:center;justify-content:center"><i class="fab fa-instagram"></i></div></a>
-
-      <a class="linkedin" href="https://linkedin.com" target="_blank" title="LinkedIn" style="text-decoration:none"><div style="width:60px;height:60px;border-radius:12px;background:#0077b5;color:#fff;display:flex;align-items:center;justify-content:center"><i class="fab fa-linkedin"></i></div></a>
+      <div class="contact-icons">
+        <a href="https://github.com/desiwulansari" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/desiwulansari" target="_blank" title="Instagram" style="background:linear-gradient(45deg,#f09433,#e6683c);color:#fff;padding:6px 10px;border-radius:10px"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank" title="LinkedIn" style="background:#0077b5;color:#fff;padding:6px 10px;border-radius:10px"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:desiwulansari@email.com" title="Email" style="background:linear-gradient(90deg,var(--lav-600),var(--lav-500));color:#fff;padding:6px 10px;border-radius:10px"><i class="fas fa-envelope"></i></a>
+      </div>
     </div>
   </div>
 </section>
@@ -368,67 +266,62 @@
 <section id="about" class="content">
   <div class="section-inner">
     <div class="section-title">About Me</div>
-    <div style="background:#fff;padding:20px;border-radius:12px;box-shadow:0 8px 20px rgba(20,18,30,0.04)">
-      <p>Nama: <strong>Desi Wulansari</strong></p>
-      <p>Saya fokus mempelajari jaringan, sistem, dan keamanan. Saya suka membuat tutorial agar ilmu yang saya pelajari bisa diikuti teman-teman.</p>
-    </div>
+    <div style="background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(20,18,30,0.04)"><p>Nama: <strong>Desi Wulansari</strong></p><p>Saya fokus mempelajari jaringan, sistem, dan keamanan. Saya suka membuat tutorial agar ilmu yang saya pelajari bisa diikuti teman-teman.</p></div>
   </div>
 </section>
 
-<!-- ===== MODAL (dynamic) ===== -->
+<!-- MODAL (dynamic) -->
 <div id="modal" class="modal" aria-hidden="true">
   <div class="modal-backdrop" onclick="closeModal()"></div>
   <div class="modal-card" role="dialog" aria-modal="true">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="modalInner">
-      <!-- content dynamically injected -->
-    </div>
+    <div id="modalInner"></div>
   </div>
 </div>
 
 <script>
-  // Header slide-in on load
+  // initial animations
   window.addEventListener('load', () => {
     document.querySelector('header').style.transform = 'translateY(0)';
-  });
-
-  // Project card click handling
-  document.querySelectorAll('.project-card').forEach(card=>{
-    card.addEventListener('click', ()=> {
-      const type = card.getAttribute('data-type');
-      if(type === 'server'){
-        openServerMenu();
-      } else {
-        openGeneric(type);
-      }
+    // fade-in hero and other items
+    document.querySelectorAll('.hero-left, .photo-bubble').forEach((el,i)=> {
+      el.style.opacity=0; el.style.transform='translateY(20px)';
+      setTimeout(()=>{ el.style.transition='all .6s'; el.style.opacity=1; el.style.transform='translateY(0)'; }, 350 + i*120);
     });
   });
 
-  // Modal helpers
+  // project click handling
+  document.querySelectorAll('.project-card').forEach(card=>{
+    card.addEventListener('click', ()=> {
+      const type = card.getAttribute('data-type');
+      if(type === 'server') openServerMenu(); else openGeneric(type);
+    });
+  });
+
+  // modal helpers
   const modal = document.getElementById('modal');
   const modalInner = document.getElementById('modalInner');
-
   function openModalHtml(html){
     modalInner.innerHTML = html;
     modal.classList.add('show');
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow='hidden';
   }
   function closeModal(){
     modal.classList.remove('show');
-    document.body.style.overflow = '';
+    modalInner.innerHTML='';
+    document.body.style.overflow='';
   }
 
-  // generic project handler
+  // generic project
   function openGeneric(type){
-    openModalHtml(`<h3 style="color:var(--accent)">Project: ${type}</h3>
-      <p>Deskripsi singkat project ${type}.</p>`);
+    openModalHtml(`<h3 style="color:var(--accent)">Project: ${type}</h3><p class="muted">Deskripsi singkat project ${type}.</p><div style="margin-top:14px;text-align:right"><button onclick="closeModal()" class="btn-primary">Tutup</button></div>`);
   }
 
-  // SERVER submenu
+  // server submenu
   function openServerMenu(){
     const html = `
       <h3 style="color:var(--accent)">Project Server — Daftar Layanan</h3>
-      <p>Pilih layanan server untuk melihat tutorial singkat:</p>
+      <p class="muted">Pilih layanan server untuk melihat tutorial singkat:</p>
       <div class="server-menu">
         <button class="server-btn" onclick="loadServer('dns')">DNS Server</button>
         <button class="server-btn" onclick="loadServer('dhcp')">DHCP Server</button>
@@ -440,25 +333,23 @@
         <button class="server-btn" onclick="loadServer('mail')">Mail Server</button>
         <button class="server-btn" onclick="loadServer('webmail')">Webmail</button>
       </div>
-      <div style="margin-top:14px;text-align:right"><button onclick="closeModal()" class="cta-ghost" style="border-radius:8px;padding:8px 10px">Tutup</button></div>
+      <div style="margin-top:14px;text-align:right"><button onclick="closeModal()" class="btn-ghost">Tutup</button></div>
     `;
     openModalHtml(html);
   }
 
-  // load server tutorial content (simple examples)
+  // load server tutorials
   function loadServer(t){
     let title='', body='';
     if(t==='dns'){
       title='DNS Server — Konfigurasi singkat (Debian)';
-      body=`<p>Instal dan konfigurasi bind9:</p>
-<pre>sudo apt update
+      body=`<p>Instal & konfigurasi bind9 (singkat):</p><pre>sudo apt update
 sudo apt install bind9 -y
-# edit /etc/bind/named.conf.local dan zone file</pre>
-<p>Pastikan port 53 terbuka dan forwarder dikonfigurasi.</p>`;
+# edit /etc/bind/named.conf.local dan zone file
+</pre><p>Pastikan port 53 terbuka.</p>`;
     } else if(t==='dhcp'){
-      title='DHCP Server — ISC DHCP (Debian)';
-      body=`<p>Instal ISC DHCP server dan atur rentang IP:</p>
-<pre>sudo apt install isc-dhcp-server -y
+      title='DHCP Server — ISC DHCP';
+      body=`<p>Instal ISC DHCP dan pengaturan rentang:</p><pre>sudo apt install isc-dhcp-server -y
 sudo nano /etc/dhcp/dhcpd.conf
 subnet 192.168.10.0 netmask 255.255.255.0 {
   range 192.168.10.100 192.168.10.200;
@@ -472,62 +363,55 @@ sudo a2enmod rewrite
 # buat virtual host di /etc/apache2/sites-available/your.conf
 sudo systemctl restart apache2</pre>`;
     } else if(t==='nginx'){
-      title='Nginx — Instal & Proxy';
+      title='Nginx — Instal & Server Block';
       body=`<pre>sudo apt install nginx -y
-# konfigurasi server block di /etc/nginx/sites-available/
+# buat server block di /etc/nginx/sites-available/
 sudo systemctl restart nginx</pre>`;
     } else if(t==='ftp'){
-      title='FTP (vsftpd) — Setup singkat';
+      title='FTP (vsftpd)';
       body=`<pre>sudo apt install vsftpd -y
 sudo nano /etc/vsftpd.conf
-# restart service
 sudo systemctl restart vsftpd</pre>`;
     } else if(t==='file'){
       title='File Server (Samba)';
       body=`<pre>sudo apt install samba -y
 sudo nano /etc/samba/smb.conf
-# tambahkan share, restart samba</pre>`;
+# tambah share, restart samba</pre>`;
     } else if(t==='ssh'){
       title='SSH Server — OpenSSH';
       body=`<pre>sudo apt install openssh-server -y
 sudo systemctl enable ssh
 sudo systemctl start ssh</pre>`;
     } else if(t==='mail'){
-      title='Mail Server — Postfix/Dovecot (ringkas)';
-      body=`<p>Mail server memerlukan Postfix (SMTP) & Dovecot (IMAP). Prosesnya panjang; ringkasan:</p>
-<pre>sudo apt install postfix dovecot-imapd dovecot-pop3d</pre>`;
+      title='Mail Server — Postfix & Dovecot (ringkas)';
+      body=`<p>Instal Postfix & Dovecot, atur DNS (MX), sertifikat, dan user mail.</p>`;
     } else if(t==='webmail'){
-      title='Webmail — Roundcube';
-      body=`<pre># instal roundcube dan koneksikan ke database serta postfix</pre>`;
+      title='Webmail — Roundcube (ringkas)';
+      body=`<p>Instal Roundcube & koneksikan ke DB serta Postfix.</p>`;
     } else {
       title='Tutorial';
       body='<p>Konten belum tersedia.</p>';
     }
 
-    openModalHtml(`<h3 style="color:var(--accent)">${title}</h3>${body}
-      <div style="margin-top:14px"><button onclick="openServerMenu()" class="cta-ghost" style="border-radius:8px;padding:8px 10px">Kembali</button>
-      <button onclick="closeModal()" style="margin-left:8px" class="cta-primary">Tutup</button></div>`);
+    openModalHtml(`<h3 style="color:var(--accent)">${title}</h3>${body}<div style="margin-top:14px"><button onclick="openServerMenu()" class="btn-ghost">Kembali</button><button onclick="closeModal()" class="btn-primary" style="margin-left:8px">Tutup</button></div>`);
   }
 
-  // highlight nav when scrolling
+  // nav highlight on scroll
   const navLinks = document.querySelectorAll('nav.nav-center a');
-  const sections = document.querySelectorAll('section');
+  const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll',()=>{
     let id='';
     sections.forEach(s=>{
-      const top = s.offsetTop - 140;
+      const top = s.offsetTop - 160;
       if(window.scrollY >= top) id = s.getAttribute('id');
     });
-    navLinks.forEach(a=>{
-      a.classList.remove('active');
-      if(a.getAttribute('href') === '#' + id) a.classList.add('active');
-    });
+    navLinks.forEach(a=> a.classList.remove('active') );
+    navLinks.forEach(a=> { if(a.getAttribute('href') === '#' + id) a.classList.add('active'); });
   });
 
-  // close modal on ESC
-  window.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape') closeModal();
-  });
+  // close modal with ESC & clicking outside
+  window.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeModal(); });
+  document.querySelector('.modal-backdrop').addEventListener('click', closeModal);
 </script>
 
 </body>
