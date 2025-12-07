@@ -132,6 +132,43 @@ h2{font-size:2rem;margin-bottom:20px;color:#7ab8ff;}
   h1{font-size:1.5rem;}
   .profile-img{width:80px;height:80px;}
 }
+
+  .certificate-grid{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:25px;
+  width:90%;
+  max-width:900px;
+}
+
+.certificate-item{
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.1);
+  transition:.3s;
+}
+
+.certificate-item:hover{
+  transform:translateY(-7px);
+}
+
+.certificate-item img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#ddd;
+}
+
+.certificate-item p{
+  margin-top:10px;
+  font-weight:600;
+  font-size:.9rem;
+  color:#555;
+}
+
 </style>
 </head>
 <body>
@@ -200,7 +237,24 @@ h2{font-size:2rem;margin-bottom:20px;color:#7ab8ff;}
 <!-- ACHIEVEMENTS -->
 <section id="achievements">
   <h2>Achievements</h2>
-  <p>Prestasi dan pencapaian Desi.</p>
+  <p>Daftar prestasi Desi Wulansari:</p>
+
+  <div class="certificate-grid">
+    <div class="certificate-item">
+      <img src="sertifikat1.jpg" alt="Sertifikat 1">
+      <p>Juara 1 Biologi – Nasional</p>
+    </div>
+
+    <div class="certificate-item">
+      <img src="sertifikat2.jpg" alt="Sertifikat 2">
+      <p>Juara 2 LKS TKJ</p>
+    </div>
+
+    <div class="certificate-item">
+      <img src="sertifikat3.jpg" alt="Sertifikat 3">
+      <p>Juara Favorit Web Design</p>
+    </div>
+  </div>
 </section>
 
 <!-- EXPERIENCE -->
@@ -283,3 +337,4 @@ window.onclick = e => { if(e.target == modal) modal.style.display = "none"; };
 
 </body>
 </html>
+
