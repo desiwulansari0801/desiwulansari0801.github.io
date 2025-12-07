@@ -169,6 +169,39 @@ h2{font-size:2rem;margin-bottom:20px;color:#7ab8ff;}
   color:#555;
 }
 
+  .server-menu{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+
+.server-menu button{
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#c8a2ff;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.server-menu button:hover{
+  background:#ff7eb9;
+}
+
+.back-btn{
+  margin-top:20px;
+  padding:10px 20px;
+  background:#555;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+
 </style>
 </head>
 <body>
@@ -201,12 +234,13 @@ h2{font-size:2rem;margin-bottom:20px;color:#7ab8ff;}
 <!-- PROJECTS -->
 <section id="projects">
   <h2>Projects</h2>
+    
+   <div class="project-card" onclick="openServerMenu()">
+    <i class="fas fa-server"></i>
+    <h3>Project Server</h3>
+    <p>Lihat semua layanan server</p>
+</div>
 
-  <div class="project-grid">
-    <div class="project-item" data-project="1">
-      <i class="fas fa-server"></i>
-      <p>Project Server</p>
-    </div>
 
     <div class="project-item" data-project="2">
       <i class="fas fa-network-wired"></i>
@@ -333,8 +367,131 @@ projectItems.forEach(item=>{
 
 closeBtn.onclick = ()=> modal.style.display = "none";
 window.onclick = e => { if(e.target == modal) modal.style.display = "none"; };
+
+  function openServerMenu(){
+    document.getElementById("modal").classList.add("show");
+    document.getElementById("modal-title").innerHTML = "Project Server";
+    document.getElementById("modal-body").innerHTML = `
+      <p>Pilih layanan server yang ingin kamu lihat:</p>
+
+      <div class="server-menu">
+        <button onclick="loadServer('dns')">DNS Server</button>
+        <button onclick="loadServer('dhcp')">DHCP Server</button>
+        <button onclick="loadServer('apache')">Apache</button>
+        <button onclick="loadServer('nginx')">Nginx</button>
+        <button onclick="loadServer('ftp')">FTP</button>
+        <button onclick="loadServer('file')">File Server</button>
+        <button onclick="loadServer('ssh')">SSH</button>
+        <button onclick="loadServer('mail')">Mail Server</button>
+        <button onclick="loadServer('webmail')">Webmail</button>
+      </div>
+    `;
+}
+
+  function loadServer(type){
+    let content = "";
+
+    if(type === "dns"){
+        content = `
+          <h3>DNS Server</h3>
+          <p>Berikut langkah konfigurasi DNS Server (contoh di Debian):</p>
+          <pre>
+sudo apt install bind9 -y
+nano /etc/bind/named.conf.local
+          </pre>
+        `;
+    }
+
+    if(type === "dhcp"){
+        content = `
+          <h3>DHCP Server</h3>
+          <p>Konfigurasi dasar DHCP:</p>
+          <pre>
+sudo apt install isc-dhcp-server -y
+nano /etc/dhcp/dhcpd.conf
+          </pre>
+        `;
+    }
+
+    if(type === "apache"){
+        content = `
+          <h3>Apache Web Server</h3>
+          <pre>
+sudo apt install apache2 -y
+systemctl enable apache2
+          </pre>
+        `;
+    }
+
+    if(type === "nginx"){
+        content = `
+          <h3>Nginx Server</h3>
+          <pre>
+sudo apt install nginx -y
+systemctl restart nginx
+          </pre>
+        `;
+    }
+
+    if(type === "ftp"){
+        content = `
+          <h3>FTP Server</h3>
+          <pre>
+sudo apt install vsftpd -y
+nano /etc/vsftpd.conf
+          </pre>
+        `;
+    }
+
+    if(type === "file"){
+        content = `
+          <h3>File Server (Samba)</h3>
+          <pre>
+sudo apt install samba -y
+nano /etc/samba/smb.conf
+          </pre>
+        `;
+    }
+
+    if(type === "ssh"){
+        content = `
+          <h3>SSH Server</h3>
+          <pre>
+sudo apt install openssh-server -y
+systemctl enable ssh
+          </pre>
+        `;
+    }
+
+    if(type === "mail"){
+        content = `
+          <h3>Mail Server</h3>
+          <pre>
+Install Postfix / Dovecot
+Konfigurasi MX Record
+          </pre>
+        `;
+    }
+
+    if(type === "webmail"){
+        content = `
+          <h3>Webmail</h3>
+          <pre>
+Install Roundcube
+Konfigurasi database
+          </pre>
+        `;
+    }
+
+    document.getElementById("modal-body").innerHTML = `
+        ${content}
+        <button class="back-btn" onclick="openServerMenu()">Kembali</button>
+    `;
+}
+
 </script>
 
 </body>
 </html>
+
 
