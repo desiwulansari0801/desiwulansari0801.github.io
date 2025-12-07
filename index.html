@@ -6,6 +6,7 @@
 <title>Portofolio Desi Wulansari</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
 <style>
 /* Reset & dasar */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
@@ -44,10 +45,13 @@ p.tagline{
 .header-menu{
   width:100%;padding:10px 0;display:flex;justify-content:center;
 }
-.header-menu nav{display:flex;justify-content:center;align-items:center;}
+.header-menu nav{
+  display:flex;justify-content:center;align-items:center;
+}
 .header-menu nav a{
-  text-decoration:none;color:#333;margin:0 15px;font-weight:500;
-  padding:8px 15px;border-radius:20px;background: rgba(255,255,255,0.7);
+  text-decoration:none;color:#333;margin:0 15px;
+  font-weight:500;padding:8px 15px;border-radius:20px;
+  background: rgba(255,255,255,0.7);
   transition: all 0.3s;cursor:pointer;
 }
 .header-menu nav a:hover, .header-menu nav a.active{
@@ -59,34 +63,74 @@ section{
   min-height:100vh;display:flex;flex-direction:column;
   justify-content:center;align-items:center;text-align:center;
   padding:40px 20px;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:opacity .6s, transform .6s;
 }
 h2{font-size:2rem;margin-bottom:20px;color:#7ab8ff;}
+
+/* Project Grid */
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:25px;margin-top:30px;width:90%;max-width:900px;
+}
+.project-item{
+  background:white;padding:25px;border-radius:20px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.1);
+  cursor:pointer;transition:transform .3s;
+}
+.project-item:hover{transform:translateY(-7px);}
+.project-item i{
+  font-size:50px;margin-bottom:10px;color:#c38bff;
+}
+.project-item p{
+  font-weight:600;margin-top:5px;
+}
+
+/* Modal */
+.modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.6);display:none;
+  justify-content:center;align-items:center;padding:20px;
+  z-index:2000;
+}
+.modal-content{
+  background:#fff;border-radius:20px;padding:30px;
+  width:90%;max-width:500px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+  animation:pop .4s ease;
+  text-align:center;
+}
+@keyframes pop{
+  from{transform:scale(0.5);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+.close{
+  float:right;font-size:25px;font-weight:bold;
+  cursor:pointer;color:#ff7eb9;
+}
 
 /* Contact */
 .contact-links{
   display:flex;justify-content:center;gap:30px;flex-wrap:wrap;
-  opacity:0;transform: scale(0.5);
-  transition: all 0.6s ease;margin-top:20px;
+  opacity:0;transform:scale(0.5);
+  transition:all .6s;margin-top:20px;
 }
-.contact-links.show{opacity:1;transform: scale(1.2);}
+.contact-links.show{opacity:1;transform:scale(1.2);}
 .contact-links a{
-  text-decoration:none;color:#fff;width:60px;height:60px;display:flex;justify-content:center;align-items:center;border-radius:50%;
-  font-size:1.5rem;transition: transform 0.3s;
+  text-decoration:none;color:#fff;width:60px;
+  height:60px;display:flex;justify-content:center;
+  align-items:center;border-radius:50%;font-size:1.5rem;transition:.3s;
 }
 .contact-links a.github{background:#333;}
 .contact-links a.instagram{background:#e1306c;}
 .contact-links a.linkedin{background:#0077b5;}
 .contact-links a.email{background:#ff7eb9;}
-.contact-links a:hover{transform: translateY(-5px);}
+.contact-links a:hover{transform:translateY(-5px);}
 
 /* Responsive */
 @media(max-width:600px){
   h1{font-size:1.5rem;}
-  p.tagline{font-size:0.9rem;margin-bottom:15px;}
   .profile-img{width:80px;height:80px;}
-  .header-menu nav a{margin:5px;padding:5px 10px;}
-  .contact-links a{width:50px;height:50px;font-size:1.2rem;}
 }
 </style>
 </head>
@@ -94,10 +138,11 @@ h2{font-size:2rem;margin-bottom:20px;color:#7ab8ff;}
 
 <header>
   <div class="header-top">
-    <img src="foto-aku.jpg" alt="Foto Desi Wulansari" class="profile-img">
+    <img src="foto-aku.jpg" class="profile-img">
     <h1>Desi Wulansari</h1>
     <p class="tagline">"Bukan sekadar skill, tapi karya yang berbicara."</p>
   </div>
+
   <div class="header-menu">
     <nav>
       <a href="#home" class="active">Beranda</a>
@@ -110,75 +155,130 @@ h2{font-size:2rem;margin-bottom:20px;color:#7ab8ff;}
   </div>
 </header>
 
+<!-- HOME -->
 <section id="home">
   <h2>Selamat Datang!</h2>
-  <p>Ini adalah halaman awal portofolio Desi Wulansari. Klik menu untuk melihat Projects, Achievements, Experience, Contact, dan About.</p>
+  <p>Ini adalah halaman awal portofolio Desi Wulansari.</p>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
   <h2>Projects</h2>
-  <p>Di sini Desi bisa menampilkan project terbaikmu.</p>
-</section>
 
-<section id="achievements">
-  <h2>Achievements</h2>
-  <p>Di sini Desi bisa menampilkan prestasi dan penghargaanmu.</p>
-</section>
+  <div class="project-grid">
+    <div class="project-item" data-project="1">
+      <i class="fas fa-server"></i>
+      <p>Project Server</p>
+    </div>
 
-<section id="experience">
-  <h2>Experience</h2>
-  <p>Di sini Desi bisa menampilkan pengalaman kerja atau magang.</p>
-</section>
+    <div class="project-item" data-project="2">
+      <i class="fas fa-network-wired"></i>
+      <p>Networking</p>
+    </div>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p style="margin-bottom:30px;">Hubungi aku melalui sosial media dan email:</p>
-  <div class="contact-links">
-    <a href="https://github.com/desiwulansari" class="github" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://instagram.com/desiwulansari" class="instagram" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://linkedin.com/in/desiwulansari" class="linkedin" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="mailto:desiwulansari@email.com" class="email" title="Email"><i class="fas fa-envelope"></i></a>
+    <div class="project-item" data-project="3">
+      <i class="fas fa-code"></i>
+      <p>Web Development</p>
+    </div>
+
+    <div class="project-item" data-project="4">
+      <i class="fas fa-database"></i>
+      <p>Database</p>
+    </div>
   </div>
 </section>
 
+<!-- MODAL -->
+<div class="modal" id="projectModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDescription"></p>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <h2>Achievements</h2>
+  <p>Prestasi dan pencapaian Desi.</p>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2>Experience</h2>
+  <p>Pengalaman kerja dan magang.</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Hubungi aku melalui sosial media:</p>
+
+  <div class="contact-links">
+    <a href="https://github.com/desiwulansari" class="github"><i class="fab fa-github"></i></a>
+    <a href="https://instagram.com/desiwulansari" class="instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:desi@gmail.com" class="email"><i class="fas fa-envelope"></i></a>
+  </div>
+</section>
+
+<!-- ABOUT -->
 <section id="about">
   <h2>About</h2>
-  <p>Desi bisa menulis sedikit tentang dirimu di sini.</p>
+  <p>Tentang Desi Wulansari.</p>
 </section>
 
 <script>
-  // animasi contact icon
-  const contactSection = document.querySelector('#contact');
-  const contactLinks = document.querySelector('.contact-links');
-  const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        contactLinks.classList.add('show');
-      } else {
-        contactLinks.classList.remove('show');
-      }
-    });
-  }, {threshold:0.5});
-  observer.observe(contactSection);
-
-  // Highlight menu saat scroll
-  const sections = document.querySelectorAll('section');
-  const menuLinks = document.querySelectorAll('.header-menu nav a');
-  window.addEventListener('scroll', ()=>{
-    let current = '';
-    sections.forEach(section=>{
-      const sectionTop = section.offsetTop - 120;
-      if(pageYOffset >= sectionTop){
-        current = section.getAttribute('id');
-      }
-    });
-    menuLinks.forEach(link=>link.classList.remove('active'));
-    menuLinks.forEach(link=>{
-      if(link.getAttribute('href') === '#' + current){
-        link.classList.add('active');
-      }
-    });
+// Contact Animasi
+const contactSection = document.querySelector('#contact');
+const contactLinks = document.querySelector('.contact-links');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) contactLinks.classList.add('show');
   });
+},{threshold:0.5});
+observer.observe(contactSection);
+
+// Menu scroll highlight
+const sections = document.querySelectorAll('section');
+const menuLinks = document.querySelectorAll('.header-menu nav a');
+window.addEventListener('scroll', ()=>{
+  let current = '';
+  sections.forEach(sec=>{
+    const top = sec.offsetTop - 120;
+    if(pageYOffset >= top) current = sec.id;
+  });
+  menuLinks.forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href') === '#'+current) a.classList.add('active');
+  });
+});
+
+// Modal Project
+const projectItems = document.querySelectorAll('.project-item');
+const modal = document.getElementById('projectModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalDescription = document.getElementById('modalDescription');
+const closeBtn = document.querySelector('.close');
+
+const projectData = {
+  1: {title:"Project Server", desc:"Berisi konfigurasi server, DHCP, DNS, FTP, dan lainnya."},
+  2: {title:"Networking", desc:"Project jaringan seperti topologi, routing, dan VLAN."},
+  3: {title:"Web Development", desc:"Proyek web HTML, CSS, JavaScript."},
+  4: {title:"Database", desc:"Pembuatan dan manajemen database MySQL/PostgreSQL."}
+};
+
+projectItems.forEach(item=>{
+  item.addEventListener('click', ()=>{
+    let id = item.getAttribute('data-project');
+    modalTitle.textContent = projectData[id].title;
+    modalDescription.textContent = projectData[id].desc;
+    modal.style.display = "flex";
+  });
+});
+
+closeBtn.onclick = ()=> modal.style.display = "none";
+window.onclick = e => { if(e.target == modal) modal.style.display = "none"; };
 </script>
 
 </body>
