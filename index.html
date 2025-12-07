@@ -1,454 +1,242 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portofolio Desi Wulansari</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
+<title>Desi Wulansari Portfolio</title>
 <style>
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #fafafa;
+    }
 
-html { scroll-behavior: smooth; }
-body { background: #f9f5ff; color: #333; }
+    header {
+        background: #6A5ACD;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
 
-/* ===========================
-   HEADER
-=========================== */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    nav a {
+        margin: 0 15px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-.header-top,
-.header-menu {
-  background: #c8a2ff;
-}
+    .section {
+        padding: 40px;
+        text-align: center;
+    }
 
-.header-top {
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
+    /* ---- PROJECT GRID ---- */
+    .project-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
 
-.profile-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ff7eb9;
-  margin-bottom: 10px;
-  transition: .3s;
-}
-.profile-img:hover {
-  transform: scale(1.05);
-  border-color: #7ab8ff;
-}
+    .project-card {
+        width: 180px;
+        height: 120px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: .2s;
+    }
+    .project-card:hover {
+        transform: scale(1.05);
+    }
 
-h1 {
-  font-size: 2rem;
-  color: #fff;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 0 #ff7eb9,
-               -2px -2px 0 #7ab8ff,
-               3px 3px 10px rgba(255,126,185,.5),
-               0 0 15px rgba(122,184,255,.5);
-}
+    /* ---- MODAL ---- */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 50;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(4px);
+        background: rgba(0,0,0,0.4);
+    }
 
-p.tagline {
-  font-size: 1rem;
-  color: #fff;
-  padding: 5px 15px;
-  border-radius: 15px;
-  background: rgba(255,255,255,.25);
-  box-shadow: 0 4px 10px rgba(0,0,0,.1);
-}
+    .modal-content {
+        background: white;
+        width: 85%;
+        max-width: 700px;
+        margin: 7% auto;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+        animation: fadeSlide .3s ease;
+    }
 
-/* ===========================
-   MENU
-=========================== */
-.header-menu {
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
-}
+    @keyframes fadeSlide {
+        from { opacity: 0; transform: translateY(-15px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
 
-.header-menu nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .close {
+        float: right;
+        font-size: 28px;
+        cursor: pointer;
+    }
 
-.header-menu nav a {
-  text-decoration: none;
-  color: #333;
-  margin: 0 15px;
-  font-weight: 500;
-  padding: 8px 15px;
-  background: rgba(255,255,255,.7);
-  border-radius: 20px;
-  transition: .3s;
-}
-
-.header-menu nav a:hover,
-.header-menu nav a.active {
-  background: #ff7eb9;
-  color: #fff;
-}
-
-/* ===========================
-   SECTION
-=========================== */
-section {
-  min-height: 100vh;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #7ab8ff;
-}
-
-/* ===========================
-   PROJECTS
-=========================== */
-.project-card {
-  background: white;
-  padding: 25px;
-  border-radius: 20px;
-  width: 250px;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,.1);
-  cursor: pointer;
-  transition: .3s;
-  margin-bottom: 20px;
-}
-.project-card:hover { transform: translateY(-7px); }
-
-.project-card i {
-  font-size: 50px;
-  color: #c38bff;
-  margin-bottom: 10px;
-}
-
-.project-item {
-  background: white;
-  padding: 25px;
-  border-radius: 20px;
-  width: 250px;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,.1);
-  cursor: pointer;
-  transition: .3s;
-  margin-top: 20px;
-}
-
-.project-item i {
-  font-size: 50px;
-  color: #c38bff;
-}
-
-/* ===========================
-   MODAL PROJECT
-=========================== */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0,0,0,.6);
-  z-index: 2000;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 500px;
-  animation: pop .4s ease;
-}
-
-@keyframes pop {
-  from { transform: scale(.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.close {
-  float: right;
-  font-size: 25px;
-  font-weight: bold;
-  color: #ff7eb9;
-  cursor: pointer;
-}
-
-/* ===========================
-   ACHIEVEMENTS
-=========================== */
-.certificate-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-  gap: 25px;
-  width: 90%;
-  max-width: 900px;
-}
-
-.certificate-item {
-  background: white;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 3px 10px rgba(0,0,0,.1);
-  transition: .3s;
-}
-.certificate-item:hover { transform: translateY(-7px); }
-
-.certificate-item img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-/* ===========================
-   CONTACT
-=========================== */
-.contact-links {
-  display: flex;
-  gap: 30px;
-  margin-top: 20px;
-  opacity: 0;
-  transform: scale(.5);
-  transition: .6s;
-}
-
-.contact-links.show {
-  opacity: 1;
-  transform: scale(1.2);
-}
-
-.contact-links a {
-  width: 60px;
-  height: 60px;
-  font-size: 1.5rem;
-  color: #fff;
-  background: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  transition: .3s;
-}
-
-.contact-links a.github { background: #333; }
-.contact-links a.instagram { background: #e1306c; }
-.contact-links a.linkedin { background: #0077b5; }
-.contact-links a.email { background: #ff7eb9; }
-
-.contact-links a:hover { transform: translateY(-5px); }
-
+    /* BUTTON LIST */
+    .server-list button {
+        width: 200px;
+        padding: 12px;
+        margin: 8px;
+        border: none;
+        border-radius: 8px;
+        background: #6A5ACD;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="header-top">
-    <img src="foto-aku.jpg" class="profile-img">
-    <h1>Desi Wulansari</h1>
-    <p class="tagline">"Bukan sekadar skill, tapi karya yang berbicara."</p>
-  </div>
-
-  <div class="header-menu">
+    <h2>Desi Wulansari Portfolio</h2>
     <nav>
-      <a href="#home" class="active">Beranda</a>
-      <a href="#projects">Projects</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
+        <a href="#home">Home</a>
+        <a href="#project">Project</a>
+        <a href="#achievement">Achievement</a>
     </nav>
-  </div>
 </header>
 
-<!-- ===========================
-     HOME
-=========================== -->
-<section id="home">
-  <h2>Selamat Datang!</h2>
-  <p>Ini adalah halaman awal portofolio Desi Wulansari.</p>
+<section id="project" class="section">
+    <h2>Project</h2>
+
+    <div class="project-grid">
+        <!-- PROJECT SERVER CARD -->
+        <div class="project-card" onclick="openModal('modalServer')">
+            <b>Project Server</b>
+        </div>
+
+        <!-- PROJECT LAIN -->
+        <div class="project-card">Project 2</div>
+        <div class="project-card">Project 3</div>
+    </div>
 </section>
 
-<!-- ===========================
-     PROJECTS
-=========================== -->
-<section id="projects">
-  <h2>Projects</h2>
+<!-- ========== MODAL PROJECT SERVER ========== -->
+<div id="modalServer" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalServer')">&times;</span>
+        <h3>Project Server</h3>
+        <p>Pilih server yang ingin kamu buka tutorialnya:</p>
 
-  <div class="project-card" onclick="openServerMenu()">
-    <i class="fas fa-server"></i>
-    <h3>Project Server</h3>
-    <p>Lihat semua layanan server</p>
-  </div>
-
-  <div class="project-item" data-project="2">
-    <i class="fas fa-network-wired"></i>
-    <p>Networking</p>
-  </div>
-
-  <div class="project-item" data-project="3">
-    <i class="fas fa-code"></i>
-    <p>Web Development</p>
-  </div>
-
-  <div class="project-item" data-project="4">
-    <i class="fas fa-database"></i>
-    <p>Database</p>
-  </div>
-</section>
-
-<!-- MODAL -->
-<div class="modal" id="projectModal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3 id="modalTitle"></h3>
-    <p id="modalDescription"></p>
-  </div>
+        <div class="server-list">
+            <button onclick="openModal('dns')">DNS Server</button>
+            <button onclick="openModal('dhcp')">DHCP Server</button>
+            <button onclick="openModal('apache')">Apache</button>
+            <button onclick="openModal('nginx')">Nginx</button>
+            <button onclick="openModal('ftp')">FTP</button>
+            <button onclick="openModal('file')">File Server</button>
+            <button onclick="openModal('ssh')">SSH</button>
+            <button onclick="openModal('mail')">Mail Server</button>
+            <button onclick="openModal('webmail')">Webmail</button>
+        </div>
+    </div>
 </div>
 
-<!-- ===========================
-     ACHIEVEMENTS
-=========================== -->
-<section id="achievements">
-  <h2>Achievements</h2>
-
-  <div class="certificate-grid">
-    <div class="certificate-item">
-      <img src="sertifikat1.jpg">
-      <p>Juara 1 Biologi – Nasional</p>
+<!-- ========== SETIAP TUTORIAL MODAL ========== -->
+<div id="dns" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('dns')">&times;</span>
+        <h3>DNS Server</h3>
+        <p>Isi tutorial DNS server kamu di sini.</p>
     </div>
+</div>
 
-    <div class="certificate-item">
-      <img src="sertifikat2.jpg">
-      <p>Juara 2 LKS TKJ</p>
+<div id="dhcp" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('dhcp')">&times;</span>
+        <h3>DHCP Server</h3>
+        <p>Isi tutorial DHCP server kamu di sini.</p>
     </div>
+</div>
 
-    <div class="certificate-item">
-      <img src="sertifikat3.jpg">
-      <p>Juara Favorit Web Design</p>
+<div id="apache" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('apache')">&times;</span>
+        <h3>Apache Web Server</h3>
+        <p>Isi tutorial Apache kamu.</p>
     </div>
-  </div>
-</section>
+</div>
 
-<!-- ===========================
-     EXPERIENCE
-=========================== -->
-<section id="experience">
-  <h2>Experience</h2>
-  <p>Pengalaman kerja dan magang.</p>
-</section>
+<div id="nginx" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('nginx')">&times;</span>
+        <h3>Nginx Web Server</h3>
+        <p>Isi tutorial Nginx kamu.</p>
+    </div>
+</div>
 
-<!-- ===========================
-     CONTACT
-=========================== -->
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Hubungi aku melalui sosial media:</p>
+<div id="ftp" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('ftp')">&times;</span>
+        <h3>FTP Server</h3>
+        <p>Isi tutorial FTP.</p>
+    </div>
+</div>
 
-  <div class="contact-links">
-    <a href="https://github.com/desiwulansari" class="github"><i class="fab fa-github"></i></a>
-    <a href="https://instagram.com/desiwulansari" class="instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin"></i></a>
-    <a href="mailto:desi@gmail.com" class="email"><i class="fas fa-envelope"></i></a>
-  </div>
-</section>
+<div id="file" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('file')">&times;</span>
+        <h3>File Server</h3>
+        <p>Isi tutorial File Server.</p>
+    </div>
+</div>
 
-<!-- ===========================
-     ABOUT
-=========================== -->
-<section id="about">
-  <h2>About</h2>
-  <p>Tentang Desi Wulansari.</p>
-</section>
+<div id="ssh" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('ssh')">&times;</span>
+        <h3>SSH Server</h3>
+        <p>Isi tutorial SSH.</p>
+    </div>
+</div>
+
+<div id="mail" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('mail')">&times;</span>
+        <h3>Mail Server</h3>
+        <p>Isi tutorial Mail Server.</p>
+    </div>
+</div>
+
+<div id="webmail" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('webmail')">&times;</span>
+        <h3>Webmail</h3>
+        <p>Isi tutorial Webmail.</p>
+    </div>
+</div>
 
 <script>
-/* Highlight Menu Scroll */
-const sections = document.querySelectorAll("section");
-const menuLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(sec => {
-    if (pageYOffset >= sec.offsetTop - 120) current = sec.id;
-  });
-
-  menuLinks.forEach(a => {
-    a.classList.remove("active");
-    if (a.getAttribute("href") === "#" + current) {
-      a.classList.add("active");
-    }
-  });
-});
-
-/* Contact Animation */
-const contactSection = document.querySelector("#contact");
-const contactLinks = document.querySelector(".contact-links");
-
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) contactLinks.classList.add("show");
+function openModal(id) {
+    document.getElementById(id).style.display = "block";
+}
+function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+}
+window.onclick = function(e) {
+    document.querySelectorAll('.modal').forEach(m => {
+        if (e.target === m) m.style.display = "none";
     });
-  }, { threshold: 0.5 }
-);
-observer.observe(contactSection);
-
-/* Modal Project */
-const modal = document.getElementById("projectModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalDesc = document.getElementById("modalDescription");
-const closeBtn = document.querySelector(".close");
-
-const projectItems = document.querySelectorAll(".project-item");
-
-const projectData = {
-  2: { title: "Networking", desc: "Topologi, routing, VLAN, dan konfigurasi jaringan lainnya." },
-  3: { title: "Web Development", desc: "Project HTML, CSS, JavaScript, dan UI/UX." },
-  4: { title: "Database", desc: "Manajemen dan implementasi basis data." }
-};
-
-projectItems.forEach(item => {
-  item.addEventListener("click", () => {
-    let id = item.getAttribute("data-project");
-    modalTitle.textContent = projectData[id].title;
-    modalDesc.textContent = projectData[id].desc;
-    modal.style.display = "flex";
-  });
-});
-
-closeBtn.addEventListener("click", () => modal.style.display = "none");
-window.addEventListener("click", e => { if (e.target === modal) modal.style.display = "none"; });
-
+}
 </script>
 
 </body>
