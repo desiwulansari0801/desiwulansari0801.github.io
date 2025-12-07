@@ -4,153 +4,100 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portofolio Desi Wulansari</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
 <style>
-/* RESET */
+/* Reset & dasar */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#faf7ff;color:#333;overflow-x:hidden;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior: smooth;}
+body{background:#f9f5ff;color:#333;}
 
-/* HEADER */
-header{
-  position:sticky;top:0;z-index:1000;
-  background:#c8a2ff;
-  border-radius:0 0 20px 20px;
-  box-shadow:0 2px 12px rgba(0,0,0,0.15);
-}
-
+/* Header */
+header{position:sticky;top:0;z-index:1000;}
+.header-top, .header-menu{background:#c8a2ff;}
 .header-top{
-  text-align:center;padding:30px 10px;
+  padding:30px 20px;
+  display:flex;flex-direction:column;align-items:center;
+  border-radius:0 0 20px 20px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.15);
 }
 .profile-img{
-  width:110px;height:110px;border-radius:50%;
-  object-fit:cover;border:4px solid white;
-  box-shadow:0 3px 8px rgba(0,0,0,0.2);
+  width:100px;height:100px;border-radius:50%;object-fit:cover;
+  border:3px solid #ff7eb9;margin-bottom:10px;
+  transition: transform 0.3s, border-color 0.3s;
 }
+.profile-img:hover{transform: scale(1.05); border-color:#7ab8ff;}
 h1{
-  margin-top:10px;font-size:2.4rem;color:#fff;
-  text-shadow:0 0 8px rgba(255,255,255,0.5);
+  font-size:2rem;color:#fff;
+  text-shadow:2px 2px 0 #ff7eb9,-2px -2px 0 #7ab8ff,
+    3px 3px 10px rgba(255,126,185,0.5),
+    0 0 15px rgba(122,184,255,0.5);
+  margin-bottom:10px;
 }
 p.tagline{
-  font-size:1rem;color:#fff;margin-top:5px;
-  background:rgba(255,255,255,0.25);
-  padding:6px 15px;border-radius:15px;
+  font-size:1rem;color:#fff;padding:5px 15px;border-radius:15px;
+  display:inline-block;box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.25);
 }
 
-/* MENU */
+/* Menu */
 .header-menu{
-  display:flex;justify-content:center;padding:12px 0;
-  background:#c8a2ff;
+  width:100%;padding:10px 0;display:flex;justify-content:center;
 }
-.header-menu nav{
-  display:flex;gap:20px;
-}
+.header-menu nav{display:flex;justify-content:center;align-items:center;}
 .header-menu nav a{
-  text-decoration:none;color:#fff;
-  padding:8px 16px;border-radius:20px;
-  background:rgba(255,255,255,0.25);
-  transition:.3s;
-  font-weight:500;
+  text-decoration:none;color:#333;margin:0 15px;font-weight:500;
+  padding:8px 15px;border-radius:20px;background: rgba(255,255,255,0.7);
+  transition: all 0.3s;cursor:pointer;
 }
-.header-menu nav a:hover,
-.header-menu nav a.active{
-  background:#fff;color:#c8a2ff;
+.header-menu nav a:hover, .header-menu nav a.active{
+  background:#ff7eb9;color:#fff;
 }
 
-/* SECTION BASE */
+/* Section */
 section{
-  min-height:100vh;padding:40px 20px;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;
-  opacity:0;transform: translateY(40px);
-  transition: all 0.7s ease;
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:40px 20px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
-section.show{opacity:1;transform:translateY(0);}
+h2{font-size:2rem;margin-bottom:20px;color:#7ab8ff;}
 
-h2{
-  font-size:2.2rem;margin-bottom:20px;color:#874be9;
-}
-
-/* HOME SECTION */
-.home-text{
-  max-width:650px;font-size:1.1rem;line-height:1.6;
-  background:white;padding:25px;border-radius:20px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.05);
-}
-
-/* PROJECT SECTION */
-.projects-grid{
-  display:grid;grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
-  gap:25px;margin-top:30px;max-width:900px;
-}
-.project-card{
-  background:white;padding:20px;border-radius:18px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-  transition:.3s;cursor:pointer;
-}
-.project-card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 6px 15px rgba(0,0,0,0.15);
-}
-.project-card i{
-  font-size:2rem;color:#874be9;margin-bottom:10px;
-}
-
-/* EXPERIENCE SECTION */
-.exp-card{
-  background:white;padding:20px;border-radius:20px;
-  max-width:650px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.10);
-}
-.exp-card img{
-  width:100%;border-radius:10px;margin-bottom:15px;
-}
-
-/* CONTACT */
+/* Contact */
 .contact-links{
-  display:flex;gap:25px;margin-top:20px;flex-wrap:wrap;
+  display:flex;justify-content:center;gap:30px;flex-wrap:wrap;
+  opacity:0;transform: scale(0.5);
+  transition: all 0.6s ease;margin-top:20px;
 }
+.contact-links.show{opacity:1;transform: scale(1.2);}
 .contact-links a{
-  width:60px;height:60px;border-radius:50%;
-  display:flex;justify-content:center;align-items:center;
-  font-size:1.7rem;color:white;
-  transition:.3s;
+  text-decoration:none;color:#fff;width:60px;height:60px;display:flex;justify-content:center;align-items:center;border-radius:50%;
+  font-size:1.5rem;transition: transform 0.3s;
 }
-.contact-links a:hover{transform:translateY(-6px);}
-.github{background:#333;}
-.instagram{background:#e1306c;}
-.linkedin{background:#0077b5;}
-.email{background:#ff7eb9;}
+.contact-links a.github{background:#333;}
+.contact-links a.instagram{background:#e1306c;}
+.contact-links a.linkedin{background:#0077b5;}
+.contact-links a.email{background:#ff7eb9;}
+.contact-links a:hover{transform: translateY(-5px);}
 
-/* ABOUT */
-.about-box{
-  max-width:650px;background:white;padding:25px;
-  border-radius:20px;box-shadow:0 4px 12px rgba(0,0,0,0.1);
-  font-size:1.05rem;line-height:1.7;
-}
-
-/* RESPONSIVE */
+/* Responsive */
 @media(max-width:600px){
-  h1{font-size:1.9rem;}
-  .profile-img{width:90px;height:90px;}
-  h2{font-size:1.7rem;}
+  h1{font-size:1.5rem;}
+  p.tagline{font-size:0.9rem;margin-bottom:15px;}
+  .profile-img{width:80px;height:80px;}
+  .header-menu nav a{margin:5px;padding:5px 10px;}
+  .contact-links a{width:50px;height:50px;font-size:1.2rem;}
 }
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="header-top">
-    <img src="foto-aku.jpg" class="profile-img">
+    <img src="foto-aku.jpg" alt="Foto Desi Wulansari" class="profile-img">
     <h1>Desi Wulansari</h1>
     <p class="tagline">"Bukan sekadar skill, tapi karya yang berbicara."</p>
   </div>
-
   <div class="header-menu">
     <nav>
       <a href="#home" class="active">Beranda</a>
@@ -163,104 +110,75 @@ h2{
   </div>
 </header>
 
-<!-- HOME -->
 <section id="home">
-  <h2>Selamat Datang</h2>
-  <div class="home-text">
-    Aku Desi Wulansari — seorang pelajar yang suka mengeksplor teknologi, 
-    memecahkan masalah, dan belajar hal baru setiap hari.  
-    Belajar bagiku bukan sekadar kewajiban, tapi perjalanan untuk membangun 
-    versi terbaik dari diri sendiri.  
-    <br><br>
-    Setiap error yang kutemui bukan hambatan, tapi petunjuk bahwa aku sedang berkembang.
-  </div>
+  <h2>Selamat Datang!</h2>
+  <p>Ini adalah halaman awal portofolio Desi Wulansari. Klik menu untuk melihat Projects, Achievements, Experience, Contact, dan About.</p>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <h2>Projects</h2>
-
-  <div class="projects-grid">
-    <div class="project-card"><i class="fas fa-network-wired"></i><p>DHCP Server</p></div>
-    <div class="project-card"><i class="fas fa-globe"></i><p>DNS Server</p></div>
-    <div class="project-card"><i class="fas fa-folder-open"></i><p>File Server</p></div>
-    <div class="project-card"><i class="fas fa-server"></i><p>FTP Server</p></div>
-    <div class="project-card"><i class="fas fa-terminal"></i><p>SSH Server</p></div>
-    <div class="project-card"><i class="fas fa-envelope"></i><p>Mail Server</p></div>
-    <div class="project-card"><i class="fas fa-paper-plane"></i><p>Webmail</p></div>
-    <div class="project-card"><i class="fas fa-fire"></i><p>Apache</p></div>
-    <div class="project-card"><i class="fas fa-leaf"></i><p>Nginx</p></div>
-    <div class="project-card"><i class="fab fa-windows"></i><p>IIS</p></div>
-  </div>
+  <p>Di sini Desi bisa menampilkan project terbaikmu.</p>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="achievements">
   <h2>Achievements</h2>
-  <div class="exp-card">
-    <img src="sertifikat-1.jpg">
-    <p><b>Juara 1 Lomba Biologi Nasional</b><br>Diikuti oleh ratusan peserta dari berbagai sekolah.</p>
-  </div>
+  <p>Di sini Desi bisa menampilkan prestasi dan penghargaanmu.</p>
 </section>
 
 <section id="experience">
   <h2>Experience</h2>
-  <div class="exp-card">
-    <img src="sertifikat-2.jpg">
-    <p><b>Pengalaman PKL & Server Deployment</b><br>Membangun berbagai layanan server seperti DHCP, DNS, FTP, dan Mail secara mandiri.</p>
-  </div>
+  <p>Di sini Desi bisa menampilkan pengalaman kerja atau magang.</p>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
-  <p>Hubungi aku melalui media berikut:</p>
-
+  <p style="margin-bottom:30px;">Hubungi aku melalui sosial media dan email:</p>
   <div class="contact-links">
-    <a href="https://github.com/desiwulansari" class="github" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://instagram.com" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://linkedin.com" class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="mailto:desiwulansari@email.com" class="email"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/desiwulansari" class="github" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://instagram.com/desiwulansari" class="instagram" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://linkedin.com/in/desiwulansari" class="linkedin" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:desiwulansari@email.com" class="email" title="Email"><i class="fas fa-envelope"></i></a>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-  <h2>About Me</h2>
-  <div class="about-box">
-    Namaku <b>Desi Wulansari</b>.  
-    Aku suka mempelajari dunia jaringan, server, dan keamanan sistem.  
-    Aku tipe yang belajar sambil praktik—kalau penasaran, aku cari cara buat nyoba.  
-    <br><br>
-    Aku ingin bekerja di bidang <b>cyber security</b>, karena aku percaya keamanan sistem adalah fondasi dari teknologi masa depan.
-  </div>
+  <h2>About</h2>
+  <p>Desi bisa menulis sedikit tentang dirimu di sini.</p>
 </section>
 
 <script>
-// Fade-in animasi tiap section
-const sections = document.querySelectorAll("section");
-const reveal = new IntersectionObserver((e)=>{
-  e.forEach(i=>{
-    if(i.isIntersecting) i.target.classList.add("show");
-  });
-},{threshold:0.2});
-sections.forEach(sec=>reveal.observe(sec));
+  // animasi contact icon
+  const contactSection = document.querySelector('#contact');
+  const contactLinks = document.querySelector('.contact-links');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        contactLinks.classList.add('show');
+      } else {
+        contactLinks.classList.remove('show');
+      }
+    });
+  }, {threshold:0.5});
+  observer.observe(contactSection);
 
-// Menu highlight
-const navLinks = document.querySelectorAll('.header-menu nav a');
-window.addEventListener('scroll',()=>{
-  let current="";
-  sections.forEach(sec=>{
-    const secTop = sec.offsetTop - 150;
-    if(scrollY >= secTop) current = sec.id;
+  // Highlight menu saat scroll
+  const sections = document.querySelectorAll('section');
+  const menuLinks = document.querySelectorAll('.header-menu nav a');
+  window.addEventListener('scroll', ()=>{
+    let current = '';
+    sections.forEach(section=>{
+      const sectionTop = section.offsetTop - 120;
+      if(pageYOffset >= sectionTop){
+        current = section.getAttribute('id');
+      }
+    });
+    menuLinks.forEach(link=>link.classList.remove('active'));
+    menuLinks.forEach(link=>{
+      if(link.getAttribute('href') === '#' + current){
+        link.classList.add('active');
+      }
+    });
   });
-  navLinks.forEach(a=>a.classList.remove("active"));
-  navLinks.forEach(a=>{
-    if(a.getAttribute("href") === "#" + current){
-      a.classList.add("active");
-    }
-  });
-});
 </script>
 
 </body>
