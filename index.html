@@ -158,7 +158,8 @@
       <div class="kicker">Student & Builder</div>
       <h1 class="hero-title">Desi Wulansari</h1>
        <h1 class="hero-title">Belajar Membangun dan Berbagi</h1>
-      <p class="hero-desc">Aku membangun layanan server (DHCP, DNS, FTP, Mail) dan project web. Semua dibangun untuk belajar dan sekaligus jadi tutorial bagi teman yang ingin mencoba.</p>
+      <p class="hero-desc">Aku membangun layanan server (DHCP, DNS, FTP, Mail) dan project web.</p>
+      <p class="hero-desc">Semua dibangun untuk belajar dan sekaligus jadi tutorial bagi teman yang ingin mencoba.</p>
 
       <div class="hero-ctas">
         <button class="btn-primary" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">Lihat Projects</button>
@@ -344,10 +345,15 @@
     let title='', body='';
     if(t==='dns'){
       title='DNS Server — Konfigurasi singkat (Debian)';
-      body=`<p>Instal & konfigurasi bind9 (singkat):</p><pre>sudo apt update
-sudo apt install bind9 -y
-# edit /etc/bind/named.conf.local dan zone file
-</pre><p>Pastikan port 53 terbuka.</p>`;
+      body=`<p>Tutorial Lengkap: Cara Membuat DNS Server di Debian 12:</p>
+      <p>DNS (Domain Name System) adalah layanan yang bertugas menerjemahkan nama domain menjadi alamat IP. Tanpa DNS, kita harus mengetik angka IP panjang setiap kali mau membuka website — jelas merepotkan.</p>
+      <p>Di tutorial ini, kamu akan belajar cara membuat DNS Server sendiri menggunakan Debian 12 di VirtualBox, lengkap dengan konfigurasi, zone file, dan pengujiannya.</p>
+      <pre>
+        sudo apt update (tambahkan perintah sudo jika masuk sebagai user biasa bukan superuser)
+        sudo apt install bind9 -y
+        # edit /etc/bind/named.conf.local dan zone file
+      </pre>
+      <p>Pastikan port 53 terbuka.</p>`;
     } else if(t==='dhcp'){
       title='DHCP Server — ISC DHCP';
       body=`<p>Instal ISC DHCP dan pengaturan rentang:</p><pre>sudo apt install isc-dhcp-server -y
@@ -417,6 +423,7 @@ sudo systemctl start ssh</pre>`;
 
 </body>
 </html>
+
 
 
 
