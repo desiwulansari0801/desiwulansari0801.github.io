@@ -370,6 +370,7 @@ function openServerMenu(){
   // load server tutorials
   function loadServer(t){
     let title='', body='';
+    
     if(t==='dns'){
       title='DNS Server — Konfigurasi singkat (Debian)';
       body=`<p>Tutorial Lengkap: Cara Membuat DNS Server di Debian 12:</p>
@@ -381,7 +382,9 @@ function openServerMenu(){
         # edit /etc/bind/named.conf.local dan zone file
       </pre>
       <p>Pastikan port 53 terbuka.</p>`;
-    } else if(t==='dhcp'){
+    } 
+    
+    else if(t==='dhcp'){
       title='DHCP Server — ISC DHCP';
       body=`<p>Instal ISC DHCP dan pengaturan rentang:</p><pre>sudo apt install isc-dhcp-server -y
 sudo nano /etc/dhcp/dhcpd.conf
@@ -390,39 +393,55 @@ subnet 192.168.10.0 netmask 255.255.255.0 {
   option routers 192.168.10.1;
   option domain-name-servers 8.8.8.8;
 }</pre>`;
-    } else if(t==='apache'){
+    } 
+    
+    else if(t==='apache'){
       title='Apache — Instal & VirtualHost';
       body=`<pre>sudo apt install apache2 -y
 sudo a2enmod rewrite
 # buat virtual host di /etc/apache2/sites-available/your.conf
 sudo systemctl restart apache2</pre>`;
-    } else if(t==='nginx'){
+    } 
+    
+    else if(t==='nginx'){
       title='Nginx — Instal & Server Block';
       body=`<pre>sudo apt install nginx -y
 # buat server block di /etc/nginx/sites-available/
 sudo systemctl restart nginx</pre>`;
-    } else if(t==='ftp'){
+    } 
+    
+    else if(t==='ftp'){
       title='FTP (vsftpd)';
       body=`<pre>sudo apt install vsftpd -y
 sudo nano /etc/vsftpd.conf
 sudo systemctl restart vsftpd</pre>`;
-    } else if(t==='file'){
+    } 
+    
+    else if(t==='file'){
       title='File Server (Samba)';
       body=`<pre>sudo apt install samba -y
 sudo nano /etc/samba/smb.conf
 # tambah share, restart samba</pre>`;
-    } else if(t==='ssh'){
+    } 
+    
+    else if(t==='ssh'){
       title='SSH Server — OpenSSH';
       body=`<pre>sudo apt install openssh-server -y
 sudo systemctl enable ssh
 sudo systemctl start ssh</pre>`;
-    } else if(t==='mail'){
+    } 
+    
+    else if(t==='mail'){
       title='Mail Server — Postfix & Dovecot (ringkas)';
       body=`<p>Instal Postfix & Dovecot, atur DNS (MX), sertifikat, dan user mail.</p>`;
-    } else if(t==='webmail'){
+    } 
+    
+    else if(t==='webmail'){
       title='Webmail — Roundcube (ringkas)';
       body=`<p>Instal Roundcube & koneksikan ke DB serta Postfix.</p>`;
-    } else {
+    } 
+    
+    else {
       title='Tutorial';
       body='<p>Konten belum tersedia.</p>';
     }
@@ -450,6 +469,7 @@ sudo systemctl start ssh</pre>`;
 
 </body>
 </html>
+
 
 
 
