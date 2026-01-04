@@ -373,7 +373,31 @@ function openServerMenu(){
     
     if(t==='dns'){
       title='DNS Server — Konfigurasi singkat (Debian)';
-      body=`<p>Tutorial Lengkap: Cara Membuat DNS Server di Debian 12:</p>
+      body=
+        `Tutorial Membangun DNS Server di Debian 12
+<p> DNS (Domain Name System) adalah layanan jaringan yang berfungsi menerjemahkan nama domain menjadi alamat IP. Tanpa DNS, kita harus mengingat deretan angka IP setiap kali ingin mengakses server, yang tentu tidak praktis. DNS bekerja menggunakan <strong>port 53</strong> dengan protokol <strong>UDP</strong> dan <strong>TCP</strong>. </p> <p> Pada tutorial ini, saya akan membahas cara membangun DNS Server menggunakan <strong>BIND9</strong> di <strong>Debian 12</strong> yang dijalankan di lingkungan virtual (VMware). Pembahasan dimulai dari konfigurasi network, repository, instalasi BIND9, pembuatan zona DNS (forward dan reverse), hingga pengujian. </p>
+Konfigurasi Network (Persiapan)
+<p> Sebelum menginstal DNS Server, konfigurasi jaringan harus dipastikan sudah benar. Network dibutuhkan untuk dua hal utama: komunikasi antara server dan client, serta koneksi internet untuk mengakses repository Debian. </p> <p> Pada tutorial ini digunakan <strong>dua network adapter</strong> agar fungsi jaringan bisa dipisahkan. </p> <p> <strong>Bridged Adapter (DHCP)</strong> digunakan untuk koneksi internet dan akses repository. Sedangkan <strong>Host-Only Adapter (Static IP)</strong> digunakan sebagai jalur utama layanan DNS ke client. </p> <p> Contoh IP DNS Server: </p> <pre> 192.168.8.10 </pre>
+Pengertian Repository Debian
+<p> Repository adalah tempat penyimpanan paket aplikasi pada sistem Debian. Semua software yang diinstal, termasuk BIND9, diambil dari repository. Tanpa repository yang aktif, sistem tidak dapat melakukan update maupun instalasi paket. </p>
+Update Repository Debian 12
+<p> Repository Debian disimpan pada file berikut: </p> <pre> /etc/apt/sources.list </pre> <p> Untuk melihat isinya, gunakan perintah: </p> <pre> cat /etc/apt/sources.list </pre> <p> Jika repository sudah benar, lakukan update database paket: </p> <pre> sudo apt update </pre> <p> Perintah ini tidak menginstal aplikasi, tetapi hanya memperbarui daftar paket yang tersedia. </p>
+Instalasi DNS Server (BIND9)
+<p> BIND9 adalah software DNS Server yang paling umum digunakan di sistem Linux. Setelah repository siap, lakukan instalasi BIND9 dengan perintah berikut: </p> <pre> sudo apt install bind9 bind9utils bind9-doc dnsutils -y </pre> <p> Setelah instalasi selesai, pastikan service DNS berjalan: </p> <pre> systemctl status bind9 </pre> <p> Jika status menunjukkan <strong>active (running)</strong>, berarti DNS Server sudah aktif. </p>
+Konsep Zona DNS
+<p> DNS mengenal dua jenis zona utama: </p> <ul> <li><strong>Zona Forward</strong>: menerjemahkan nama domain menjadi IP address</li> <li><strong>Zona Reverse</strong>: menerjemahkan IP address menjadi nama domain</li> </ul> <p> Contoh: </p> <pre> sekolah.com → 192.168.8.10 192.168.8.10 → sekolah.com </pre>
+Konfigurasi Zona DNS
+<p> Masuk ke direktori konfigurasi BIND: </p> <pre> cd /etc/bind </pre> <p> Edit file konfigurasi zona: </p> <pre> nano named.conf.local </pre> <p> Tambahkan konfigurasi zona forward: </p> <pre> zone "sekolah.com" { type master; file "/etc/bind/db.sekolah"; }; </pre> <p> Tambahkan konfigurasi zona reverse: </p> <pre> zone "8.168.192.in-addr.arpa" { type master; file "/etc/bind/db.10"; }; </pre> <p> Zona reverse diambil dari IP lokal <code>192.168.8.0</code>, di mana tiga oktet pertama dibalik. </p>
+Membuat Zone File Forward dan Reverse
+<p> Salin template zona forward: </p> <pre> cp db.local db.sekolah nano db.sekolah </pre> <p> Ubah <code>localhost</code> menjadi <code>sekolah.com</code> dan IP <code>127.0.0.1</code> menjadi IP DNS Server <code>192.168.8.10</code>. </p> <p> Untuk zona reverse: </p> <pre> cp db.127 db.10 nano db.10 </pre> <p> Oktet terakhir IP (<code>10</code>) digunakan sebagai record PTR yang mengarah ke <code>sekolah.com</code>. </p>
+Validasi dan Restart DNS
+<p> Sebelum menjalankan DNS, lakukan pengecekan konfigurasi: </p> <pre> named-checkconf named-checkzone sekolah.com /etc/bind/db.sekolah named-checkzone 8.168.192.in-addr.arpa /etc/bind/db.10 </pre> <p> Jika tidak ada error, restart service BIND9: </p> <pre> systemctl restart bind9 </pre>
+Pengujian DNS Server
+<p> Agar sistem menggunakan DNS Server lokal, atur file <code>/etc/resolv.conf</code>: </p> <pre> nano /etc/resolv.conf </pre> <pre> search sekolah.com nameserver 192.168.8.10 </pre> <p> Lakukan pengujian: </p> <pre> ping sekolah.com nslookup sekolah.com dig sekolah.com </pre> <p> Jika domain berhasil diterjemahkan ke IP <code>192.168.8.10</code>, maka DNS Server telah berjalan dengan benar. </p>
+Penutup
+<p> Dengan mengikuti langkah-langkah di atas, DNS Server menggunakan BIND9 di Debian 12 berhasil dibangun dan diuji. Server kini mampu menerjemahkan nama domain menjadi alamat IP, baik melalui zona forward maupun reverse. </p>
+        
+        <p>Tutorial Lengkap: Cara Membuat DNS Server di Debian 12:</p>
       <p>DNS (Domain Name System) adalah layanan yang bertugas menerjemahkan nama domain menjadi alamat IP. Tanpa DNS, kita harus mengetik angka IP panjang setiap kali mau membuka website — jelas merepotkan.</p>
       <p>Di tutorial ini, kamu akan belajar cara membuat DNS Server sendiri menggunakan Debian 12 di VirtualBox, lengkap dengan konfigurasi, zone file, dan pengujiannya.</p>
       <pre>
@@ -469,6 +493,7 @@ sudo systemctl start ssh</pre>`;
 
 </body>
 </html>
+
 
 
 
